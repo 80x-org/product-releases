@@ -3,6 +3,14 @@
   <channel>
     <title>80x</title>
     <item>
+      <title>80x 1.4 (build 6)</title>
+      <pubDate>Tue, 07 Jul 2026 12:53:38 +0000</pubDate>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/80x-org/80x-mac-dist/releases/download/v1.4-b6/80x-1.4-b6.dmg" sparkle:version="6" sparkle:shortVersionString="1.4" length="5127815" type="application/octet-stream" sparkle:edSignature="h9ssEd/26roqsD5VOBIIIAD1HBoexLUsJUIVB3ic7m0NwZGwhVA/fTq82pdMT+5FynBpLqivJjyZn9nQRu8JBA==" />
+    </item>
+    <item>
       <title>80x 1.4 (build 5)</title>
       <pubDate>Tue, 07 Jul 2026 12:51:32 +0000</pubDate>
       <sparkle:version>5</sparkle:version>
