@@ -2,5 +2,13 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
   <channel>
     <title>80x</title>
+    <item>
+      <title>80x 1.4 (build 5)</title>
+      <pubDate>Tue, 07 Jul 2026 12:48:12 +0000</pubDate>
+      <sparkle:version>5</sparkle:version>
+      <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/80x-org/80x-mac-dist/releases/download/v1.4-b5/80x-1.4-b5.dmg" sparkle:version="5" sparkle:shortVersionString="1.4" length="5127846" type="application/octet-stream" sparkle:edSignature="nXUE8UChotjjEbx1QnxawgV2dA1DksKX8lTzzU9JIvDC6nKY45FLNTIZii0xxYyt05zemFuDlbiTPl1VjX7RDQ==" />
+    </item>
   </channel>
 </rss>
