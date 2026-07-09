@@ -24,7 +24,7 @@
       <sparkle:version>9</sparkle:version>
       <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/80x-org/80x-mac-dist/releases/download/v1.4-b9/80x-1.4-b9.dmg" sparkle:version="9" sparkle:shortVersionString="1.4" length="5105143" type="application/octet-stream" sparkle:edSignature="G5K/1fweWkCJQOO+EhqdEF8hifezRXWntNPMGU+GrIBiq1OC726MVaZtCgVEtz3h68tceXQd2QnS1UKTcZ3cCQ==" />
+      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b9/80x-1.4-b9.dmg" sparkle:version="9" sparkle:shortVersionString="1.4" length="5105143" type="application/octet-stream" sparkle:edSignature="G5K/1fweWkCJQOO+EhqdEF8hifezRXWntNPMGU+GrIBiq1OC726MVaZtCgVEtz3h68tceXQd2QnS1UKTcZ3cCQ==" />
     </item>
     <item>
       <title>80x 1.4 (build 7)</title>
@@ -32,7 +32,7 @@
       <sparkle:version>7</sparkle:version>
       <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/80x-org/80x-mac-dist/releases/download/v1.4-b7/80x-1.4-b7.dmg" sparkle:version="7" sparkle:shortVersionString="1.4" length="5102549" type="application/octet-stream" sparkle:edSignature="dScPy37IHIPmVdDvswMmo89owC/v1XhNTfje96gFbP0Vst5vdX/5ZArNNzdoGyA2yIYQr7qOy8hc3iX85PyfCA==" />
+      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b7/80x-1.4-b7.dmg" sparkle:version="7" sparkle:shortVersionString="1.4" length="5102549" type="application/octet-stream" sparkle:edSignature="dScPy37IHIPmVdDvswMmo89owC/v1XhNTfje96gFbP0Vst5vdX/5ZArNNzdoGyA2yIYQr7qOy8hc3iX85PyfCA==" />
     </item>
     <item>
       <title>80x 1.4 (build 6)</title>
@@ -40,7 +40,7 @@
       <sparkle:version>6</sparkle:version>
       <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/80x-org/80x-mac-dist/releases/download/v1.4-b6/80x-1.4-b6.dmg" sparkle:version="6" sparkle:shortVersionString="1.4" length="5127815" type="application/octet-stream" sparkle:edSignature="h9ssEd/26roqsD5VOBIIIAD1HBoexLUsJUIVB3ic7m0NwZGwhVA/fTq82pdMT+5FynBpLqivJjyZn9nQRu8JBA==" />
+      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b6/80x-1.4-b6.dmg" sparkle:version="6" sparkle:shortVersionString="1.4" length="5127815" type="application/octet-stream" sparkle:edSignature="h9ssEd/26roqsD5VOBIIIAD1HBoexLUsJUIVB3ic7m0NwZGwhVA/fTq82pdMT+5FynBpLqivJjyZn9nQRu8JBA==" />
     </item>
     <item>
       <title>80x 1.4 (build 5)</title>
@@ -48,7 +48,7 @@
       <sparkle:version>5</sparkle:version>
       <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/80x-org/80x-mac-dist/releases/download/v1.4-b5/80x-1.4-b5.dmg" sparkle:version="5" sparkle:shortVersionString="1.4" length="5127781" type="application/octet-stream" sparkle:edSignature="7AFET7vfDAFPUv3VcurEjodZSUQcHkK6UuBeyo0uRWKHm8jdIOyCmtQNrfiN1/AsCR3QGd9grUYv0l/LcqjXBw==" />
+      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b5/80x-1.4-b5.dmg" sparkle:version="5" sparkle:shortVersionString="1.4" length="5127781" type="application/octet-stream" sparkle:edSignature="7AFET7vfDAFPUv3VcurEjodZSUQcHkK6UuBeyo0uRWKHm8jdIOyCmtQNrfiN1/AsCR3QGd9grUYv0l/LcqjXBw==" />
     </item>
   </channel>
 </rss>

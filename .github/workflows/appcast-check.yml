@@ -1,0 +1,102 @@
+name: Appcast integrity
+
+# Guards the Sparkle feed users actually poll: every enclosure must point at
+# THIS repo (no stale pre-rename hosts), be downloadable, and advertise the
+# same byte length the feed promises. Read-only — never writes to the repo.
+
+on:
+  push:
+    branches: [main]
+    paths: ['appcast.xml']
+  schedule:
+    - cron: '17 6 * * 1'   # weekly, Monday 06:17 UTC — catches deleted releases/assets
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Validate appcast.xml
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse feed (well-formed XML, unique versions, correct URL host)
+        run: |
+          python3 - <<'PY'
+          import sys
+          import xml.etree.ElementTree as ET
+
+          SPARKLE = "http://www.andymatuschak.org/xml-namespaces/sparkle"
+          PREFIX = "https://github.com/80x-org/product-releases/releases/download/"
+
+          try:
+              tree = ET.parse("appcast.xml")
+          except ET.ParseError as e:
+              print(f"::error file=appcast.xml::appcast.xml is not well-formed XML: {e}")
+              sys.exit(1)
+
+          items = tree.getroot().findall("channel/item")
+          if not items:
+              print("::error file=appcast.xml::appcast.xml has no <item> entries")
+              sys.exit(1)
+
+          errors = []
+          seen = {}
+          rows = []
+          for item in items:
+              title = (item.findtext("title") or "<untitled>").strip()
+              enclosure = item.find("enclosure")
+              if enclosure is None:
+                  errors.append(f"{title}: missing <enclosure>")
+                  continue
+              version = enclosure.get(f"{{{SPARKLE}}}version") or ""
+              url = enclosure.get("url") or ""
+              length = enclosure.get("length") or ""
+              if not version:
+                  errors.append(f"{title}: enclosure has no sparkle:version")
+              elif version in seen:
+                  errors.append(f"{title}: duplicate sparkle:version {version} (also on {seen[version]})")
+              else:
+                  seen[version] = title
+              if not url.startswith(PREFIX):
+                  errors.append(f"{title}: enclosure URL does not start with {PREFIX} — got {url or '<empty>'}")
+              if not length.isdigit():
+                  errors.append(f"{title}: enclosure length {length!r} is not a number")
+              rows.append(f"{title}\t{url}\t{length}")
+
+          for e in errors:
+              print(f"::error file=appcast.xml::{e}")
+          if errors:
+              sys.exit(1)
+
+          with open("items.tsv", "w") as fh:
+              fh.write("\n".join(rows) + "\n")
+          print(f"parsed {len(rows)} item(s); versions: {', '.join(seen)}")
+          PY
+
+      - name: Check every enclosure is reachable with the promised length
+        run: |
+          fail=0
+          while IFS=$'\t' read -r title url length; do
+            echo "==> $title"
+            echo "    $url (expect $length bytes)"
+            if ! curl -sfIL --max-time 60 "$url" -o /dev/null; then
+              echo "::error::$title: enclosure URL is not reachable: $url"
+              fail=1
+              continue
+            fi
+            # Follow redirects and take the FINAL response's Content-Length
+            # (github.com 302s to the asset host; earlier hops report their own).
+            got="$(curl -sIL --max-time 60 "$url" | tr -d '\r' \
+              | awk 'tolower($1) == "content-length:" { v = $2 } END { print v }')"
+            if [ "$got" != "$length" ]; then
+              echo "::error::$title: Content-Length $got != enclosure length $length ($url)"
+              fail=1
+            else
+              echo "    OK ($got bytes)"
+            fi
+          done < items.tsv
+          exit "$fail"
