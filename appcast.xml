@@ -4,11 +4,11 @@
     <title>80x</title>
     <item>
       <title>80x 1.4 (build 36)</title>
-      <pubDate>Sun, 12 Jul 2026 20:58:49 +0000</pubDate>
+      <pubDate>Sun, 12 Jul 2026 20:59:28 +0000</pubDate>
       <sparkle:version>36</sparkle:version>
       <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b36/80x-1.4-b36.dmg" sparkle:version="36" sparkle:shortVersionString="1.4" length="5979725" type="application/octet-stream" sparkle:edSignature="eXSi019pbJC9y2TULofTU4Noe6wmupsnGMTosJKzLYeLkOEk0hfqnn6AJn3XBTcRHcFNC2RMZWYe4E5kRPFVCA==" />
+      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b36/80x-1.4-b36.dmg" sparkle:version="36" sparkle:shortVersionString="1.4" length="5975861" type="application/octet-stream" sparkle:edSignature="KJrGEZenPP1Su5OEgf8bI9ziBQc07GT2SiL9rS1I6QenqdyjKARhlx5QWyW6lSSvIMrG1yKnL7hkU0TPapb0Aw==" />
     </item>
     <item>
       <title>80x 1.4 (build 35)</title>
