@@ -55,6 +55,7 @@ jobs:
               version = enclosure.get(f"{{{SPARKLE}}}version") or ""
               url = enclosure.get("url") or ""
               length = enclosure.get("length") or ""
+              signature = enclosure.get(f"{{{SPARKLE}}}edSignature") or ""
               if not version:
                   errors.append(f"{title}: enclosure has no sparkle:version")
               elif version in seen:
@@ -65,7 +66,9 @@ jobs:
                   errors.append(f"{title}: enclosure URL does not start with {PREFIX} — got {url or '<empty>'}")
               if not length.isdigit():
                   errors.append(f"{title}: enclosure length {length!r} is not a number")
-              rows.append(f"{title}\t{url}\t{length}")
+              if not signature:
+                  errors.append(f"{title}: enclosure has no sparkle:edSignature; Sparkle would reject it")
+              rows.append(f"{title}\t{url}\t{length}\t{signature}")
 
           for e in errors:
               print(f"::error file=appcast.xml::{e}")
@@ -80,7 +83,7 @@ jobs:
       - name: Check every enclosure is reachable with the promised length
         run: |
           fail=0
-          while IFS=$'\t' read -r title url length; do
+          while IFS=$'\t' read -r title url length signature; do
             echo "==> $title"
             echo "    $url (expect $length bytes)"
             if ! curl -sfIL --max-time 60 "$url" -o /dev/null; then
@@ -100,3 +103,55 @@ jobs:
             fi
           done < items.tsv
           exit "$fail"
+
+      # The feed's whole security model is the EdDSA signature: shape/host/
+      # length checks pass even if an enclosure was tampered with or signed by
+      # the wrong key, and installed apps would then refuse the update (or
+      # worse, a compromised feed could try to push one). Verify every item's
+      # sparkle:edSignature (Ed25519 over the raw DMG bytes) against the app's
+      # embedded PUBLIC key. CI holds no private key: this is verify-only.
+      - name: Verify every enclosure's EdDSA signature
+        env:
+          # Must equal SUPublicEDKey in product-mac-app/project.yml, the key
+          # baked into every shipped app. If the Sparkle key is ever rotated,
+          # update both places together.
+          SU_PUBLIC_ED_KEY: "Skka3OwBLx13WqKQtuNOVzJSZaFga+2j6USQL9i7y1w="
+        run: |
+          python3 -m pip install --quiet cryptography
+          python3 - <<'PY'
+          import base64
+          import os
+          import sys
+          import urllib.request
+
+          from cryptography.exceptions import InvalidSignature
+          from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+
+          pub = Ed25519PublicKey.from_public_bytes(
+              base64.b64decode(os.environ["SU_PUBLIC_ED_KEY"]))
+
+          fail = False
+          for line in open("items.tsv"):
+              title, url, length, signature = line.rstrip("\n").split("\t")
+              print(f"==> {title}")
+              try:
+                  sig = base64.b64decode(signature, validate=True)
+              except Exception:
+                  print(f"::error::{title}: sparkle:edSignature is not valid base64")
+                  fail = True
+                  continue
+              try:
+                  with urllib.request.urlopen(url, timeout=300) as resp:
+                      data = resp.read()
+              except Exception as e:
+                  print(f"::error::{title}: could not download {url} for signature verification: {e}")
+                  fail = True
+                  continue
+              try:
+                  pub.verify(sig, data)
+                  print(f"    signature OK ({len(data)} bytes)")
+              except InvalidSignature:
+                  print(f"::error::{title}: sparkle:edSignature does NOT verify against the app's public key ({url})")
+                  fail = True
+          sys.exit(1 if fail else 0)
+          PY
