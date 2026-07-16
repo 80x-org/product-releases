@@ -3,6 +3,14 @@
   <channel>
     <title>80x</title>
     <item>
+      <title>80x 1.4 (build 96)</title>
+      <pubDate>Thu, 16 Jul 2026 09:36:11 +0000</pubDate>
+      <sparkle:version>96</sparkle:version>
+      <sparkle:shortVersionString>1.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/80x-org/product-releases/releases/download/v1.4-b96/80x-1.4-b96.dmg" sparkle:version="96" sparkle:shortVersionString="1.4" length="8751215" type="application/octet-stream" sparkle:edSignature="o43qlM8MfAyVeboRkUYBSHyoVZprhxhnXf94O+O3wZtBjxnkvwCJOL5MGqHztQnPl7zJxdjGDWpCi5ScojpoBA==" />
+    </item>
+    <item>
       <title>80x 1.4 (build 94)</title>
       <pubDate>Wed, 15 Jul 2026 10:45:52 +0000</pubDate>
       <sparkle:version>94</sparkle:version>
