@@ -1,0 +1,8 @@
+version: 0.1.7
+files:
+  - url: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.7/80x-Setup-0.1.7.exe
+    sha512: uKqPggom0iU9lVbq602d0su4mo/cN4SdFzc8BTaa0L9SQTKZ5RunRj80t9uqHm3ECTPRBUVVBTeah3WOJDrzBw==
+    size: 102971960
+path: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.7/80x-Setup-0.1.7.exe
+sha512: uKqPggom0iU9lVbq602d0su4mo/cN4SdFzc8BTaa0L9SQTKZ5RunRj80t9uqHm3ECTPRBUVVBTeah3WOJDrzBw==
+releaseDate: '2026-07-23T14:03:05.129Z'
