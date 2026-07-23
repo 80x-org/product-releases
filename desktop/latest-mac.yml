@@ -1,11 +1,11 @@
-version: 0.1.4
+version: 0.1.8
 files:
-  - url: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.4/80x-0.1.4-arm64-mac.zip
-    sha512: vmGlLIEi2ztH7AcmCdD3Z1nzMwP3HT0tMmDwcM5H/3+p1QE3NTTiWfWxfKdr2HwkUeVjFmF3NakSaID/wVWcbQ==
-    size: 123269106
-  - url: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.4/80x-0.1.4-arm64.dmg
-    sha512: 7ib443XXihwigA683GlpWCxC8oXA6UmprCV/HUfbkqa2lksxqLCZkamS4O4qfFtZLSdE1m5DFL5WL5Kht377WA==
-    size: 123717488
-path: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.4/80x-0.1.4-arm64-mac.zip
-sha512: vmGlLIEi2ztH7AcmCdD3Z1nzMwP3HT0tMmDwcM5H/3+p1QE3NTTiWfWxfKdr2HwkUeVjFmF3NakSaID/wVWcbQ==
-releaseDate: '2026-07-23T08:30:49.634Z'
+  - url: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.8/80x-0.1.8-arm64-mac.zip
+    sha512: 3+k7ropnPN3a/XScGnFnc9J6PBAm8gmL77TgoxOQcJQLOTzqVJTH11S+02tlq6RQlRdtMtX1zUfXDR4YKDmyxA==
+    size: 123280933
+  - url: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.8/80x-0.1.8-arm64.dmg
+    sha512: yG5ctJ2Lzql1kokt0uu/tZSHgbL060O3nprsXPHHI3jn+Bl+7YbpIw27dPKv3QpGSqERAsZumRNEtXqPOrOC/A==
+    size: 123721186
+path: https://github.com/80x-org/product-releases/releases/download/desktop-v0.1.8/80x-0.1.8-arm64-mac.zip
+sha512: 3+k7ropnPN3a/XScGnFnc9J6PBAm8gmL77TgoxOQcJQLOTzqVJTH11S+02tlq6RQlRdtMtX1zUfXDR4YKDmyxA==
+releaseDate: '2026-07-23T14:35:09.753Z'
